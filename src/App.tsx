@@ -1,6 +1,13 @@
+import { WheelContainer } from "./components/WheelContainer";
+import { WheelProvider } from "./context/WheelContext";
+
 function App() {
   return (
-    <p>Hello, Wheel Game!</p>
+    <>
+      <WheelProvider>
+        <WheelContainer />
+      </WheelProvider>
+    </>
   )
 }
 

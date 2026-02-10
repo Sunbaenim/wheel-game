@@ -1,11 +1,4 @@
-export type sliceType = "group" | "member" | "action";
-
-export interface Slice {
-	id: number,
-	type: sliceType,
-	contentId: number,
-	weight: number
-}
+export type Slice = Group | Member | Action;
 
 export interface Action {
 	id: number,
@@ -31,4 +24,19 @@ export interface Player {
 	id: number,
 	name: string,
 	inventory: number[]
+}
+
+export interface SliceProps {
+	angleStart: number,
+	angleEnd: number,
+	index: number
+}
+
+export interface WheelContextType {
+    slicesOnWheel: any[];
+    spinWheel: () => void;
+    currentWheelMode?: 'Member' | 'Group';
+    winner: Slice | null;
+    players: Player[];
+    rotation: number;
 }
