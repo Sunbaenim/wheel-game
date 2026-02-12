@@ -1,4 +1,4 @@
-import { useWheel } from "../context/WheelContext";
+import { useWheel } from "../hooks/useWheel";
 import type { SliceProps } from "../types";
 
 export const Slice = ({ angleStart, angleEnd, index }: SliceProps) => {

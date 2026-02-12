@@ -1,4 +1,4 @@
-import { useWheel } from "../context/WheelContext";
+import { useWheel } from "../hooks/useWheel";
 import { Slice } from "./Slice";
 
 export const Wheel = () => {

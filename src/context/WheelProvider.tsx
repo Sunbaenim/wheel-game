@@ -1,10 +1,9 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
-import type { Player, Slice, WheelContextType } from "../types";
+import { useState, type ReactNode } from "react";
+import type { Slice } from "../types";
 import { GROUPS } from "../data/database";
 import { usePlayer } from "../hooks/usePlayer";
 import { pickRandomSlice, rotateWheel } from "../logic/wheelEngine";
-
-const WheelContext = createContext<WheelContextType | undefined>(undefined);
+import { WheelContext } from "./wheelContext";
 
 export const WheelProvider = ({ children }: { children: ReactNode }) => {
     const [slicesOnWheel, setSlicesOnWheel] = useState<any[]>(GROUPS);
@@ -32,13 +31,4 @@ export const WheelProvider = ({ children }: { children: ReactNode }) => {
             {children}
         </WheelContext.Provider>
     );
-}
-
-export const useWheel = () => {
-    const context = useContext(WheelContext);
-    if (!context) {
-        throw new Error("useWheel must be used within a WheelProvider");
-    }
-
-    return context;
 }

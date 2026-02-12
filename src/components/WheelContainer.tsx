@@ -1,6 +1,5 @@
-import { useWheel } from "../context/WheelContext";
+import { useWheel } from "../hooks/useWheel";
 import { DebugWheel } from "./DebugWheel";
-import { Wheel } from "./Wheel";
 
 export const WheelContainer = () => {
     const { spinWheel } = useWheel();

@@ -1,5 +1,5 @@
 import { MEMBERS } from "../data/database";
-import { useWheel } from "../context/WheelContext";
+import { useWheel } from "../hooks/useWheel";
 import { Wheel } from "./Wheel";
 
 export const DebugWheel = () => {
