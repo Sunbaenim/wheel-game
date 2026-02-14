@@ -1,4 +1,6 @@
-export const pickRandomSlice = (slices: any[]) => {
+import type { Group, Slice } from "../types";
+
+export const pickRandomSlice = (slices: Slice[] | Group[]) => {
     if (slices.length === 0) return null;
     const randomIndex = Math.floor(Math.random() * slices.length);
     return slices[randomIndex];

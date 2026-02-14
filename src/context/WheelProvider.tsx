@@ -1,12 +1,12 @@
 import { useState, type ReactNode } from "react";
-import type { Slice } from "../types";
+import type { Group, Slice } from "../types";
 import { GROUPS } from "../data/database";
 import { usePlayer } from "../hooks/usePlayer";
 import { pickRandomSlice, rotateWheel } from "../logic/wheelEngine";
 import { WheelContext } from "./wheelContext";
 
 export const WheelProvider = ({ children }: { children: ReactNode }) => {
-    const [slicesOnWheel, setSlicesOnWheel] = useState<any[]>(GROUPS);
+    const [slicesOnWheel, setSlicesOnWheel] = useState<Slice[] | Group[]>(GROUPS);
     const [currentWheelMode, setcurrentWheelMode] = useState<'Member' | 'Group'>('Group');
     const [winner, setWinner] = useState<Slice | null>(null);
     const { players, awardMemberToCurrentPlayer, nextTurn } = usePlayer(['Player 1', 'Player 2', 'Player 3']);
@@ -14,6 +14,7 @@ export const WheelProvider = ({ children }: { children: ReactNode }) => {
 
     const spinWheel = () => {
         const selectedSlice = pickRandomSlice(slicesOnWheel);
+        if (!selectedSlice) return;
         setRotation(rotateWheel(rotation));
         setWinner(selectedSlice);
         if (currentWheelMode === 'Group') {
